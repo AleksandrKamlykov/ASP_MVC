@@ -1,0 +1,22 @@
+﻿@model ASP_MVC.Models.Movies.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<h2>@Model.Title</h2>
+
+<div>
+    <img src="https://image.tmdb.org/t/p/w500/@Model.PosterPath" alt="@Model.Title" />
+    <p><strong>Overview:</strong> @Model.Overview</p>
+    <p><strong>Release Date:</strong> @Model.ReleaseDate.ToString("MMMM dd, yyyy")</p>
+    <p><strong>Original Language:</strong> @Model.OriginalLanguage</p>
+    <p><strong>Popularity:</strong> @Model.Popularity</p>
+    <p><strong>Vote Average:</strong> @Model.VoteAverage</p>
+    <p><strong>Vote Count:</strong> @Model.VoteCount</p>
+    <p><strong>Adult:</strong> @(Model.Adult ? "Yes" : "No")</p>
+    <p><strong>Video:</strong> @(Model.Video ? "Yes" : "No")</p>
+    <p><strong>Genres:</strong> @(Model.GenreIds != null ? string.Join(", ", Model.GenreIds) : "N/A")</p>
+    <p><strong>Backdrop:</strong></p>
+    <img src="https://image.tmdb.org/t/p/w500/@Model.BackdropPath" alt="Backdrop" />
+</div>
