@@ -1,0 +1,23 @@
+﻿@Model User
+@{
+    Layout = Context.Request.Query["mode"] == "oldDesign" ? "_LayoutOld" : "_layout";
+    var userViewData = ViewData["User"] as User;
+    var userViewBag = ViewBag.User as User;
+}
+
+@Html.Partial("_Navigation")
+<h3>User Model</h3>
+<p>Id: @Model.Id</p>
+<p>Name: @Model.Name</p>
+<p>Age: @Model.Age</p>
+<br/>
+<h3>User ViewData</h3>
+<p>Id: @userViewData.Id</p>
+<p>Name: @userViewData.Name</p>
+<p>Age: @userViewData.Age</p>
+<br />
+<h3>User ViewBag</h3>
+<p>Id: @userViewBag.Id</p>
+<p>Name: @userViewBag.Name</p>
+<p>Age: @userViewBag.Age</p>
+<br />

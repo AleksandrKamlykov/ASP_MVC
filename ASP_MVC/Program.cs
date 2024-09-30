@@ -1,16 +1,10 @@
-using ASP_MVC.Interfaces;
 using ASP_MVC.Models;
-using ASP_MVC.Repository;
-using ASP_MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
-builder.Services.AddHttpClient<TMDbService>();
-builder.Services.AddTransient<TMDbService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

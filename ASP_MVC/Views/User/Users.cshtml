@@ -1,0 +1,53 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Filtered Users";
+}
+
+<h2>Filtered Users</h2>
+
+<!-- Форма для фильтрации и сортировки пользователей -->
+<form method="get" asp-action="Users" class="form-inline mb-3">
+    <div class="form-group mr-2">
+        <label for="Name" class="mr-2">Name:</label>
+        <input type="text" id="Name" name="name" class="form-control" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="Position" class="mr-2">Position:</label>
+        <input type="text" id="Position" name="position" class="form-control" />
+    </div>
+    <div class="form-group mr-2">
+        <label for="SortBy" class="mr-2">Sort By:</label>
+        <select id="SortBy" name="sortBy" class="form-control">
+            <option value="">None</option>
+            <option value="Age">Age</option>
+            <option value="Salary">Salary</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+
+<!-- Таблица для отображения отфильтрованных пользователей -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Position</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Age</td>
+                <td>@user.Position</td>
+                <td>@user.Salary</td>
+            </tr>
+        }
+    </tbody>
+</table>
