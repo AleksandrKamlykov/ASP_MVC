@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ASP_MVC.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+
+<ul>
+    @foreach (var product in Model)
+    {
+        <li style="border-bottom: 1px solid #777">
+            <a asp-action="ProductDetails" asp-route-productId="@product.Id">@product.Name</a>
+        </li>
+    }
+</ul>

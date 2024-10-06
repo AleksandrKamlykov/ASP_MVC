@@ -1,0 +1,27 @@
+﻿@model DetailViewModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+
+}
+
+<h2>@Model.Product.Name</h2>
+<p>@Model.Product.Description</p>
+
+
+<h2>Product Reviews</h2>
+
+<p>Average Rating: @Model.AverageRating</p>
+
+@{
+    HtmlHelpers.ReviewForm(Html, Model.Product.Id).WriteTo(Html.ViewContext.Writer, HtmlEncoder.Default);
+}
+
+<h3>All Reviews</h3>
+@foreach (var review in Model.Reviews)
+{
+    <div style="border-bottom: 1px solid #777">
+        <p>Rating: @review.Rating</p>
+        <p>Comment: @review.Comment</p>
+        <p>Date: @review.Date</p>
+    </div>
+}

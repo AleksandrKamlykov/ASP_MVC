@@ -1,8 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Matrix Operations";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Select Matrix Size</h2>
+
+<form asp-action="Index" method="post">
+    <select name="size">
+        <option value="3">3x3</option>
+        <option value="6">6x6</option>
+        <option value="9">9x9</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>

@@ -1,0 +1,36 @@
+﻿@model ASP_MVC.Models.MatrixModel
+
+@{
+    ViewData["Title"] = "Matrix Input";
+}
+
+<h2>Enter Matrix Values</h2>
+
+@using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+{
+    @Html.Hidden("size", Model.Size)
+    <h3>Matrix 1</h3>
+    @for (int i = 0; i < Model.Size; i++)
+    {
+        <div>
+            @for (int j = 0; j < Model.Size; j++)
+            {
+                @Html.TextBox($"matrix1[{i}][{j}]", (i + 1) + (j + 1), new { type = "number" })
+            }
+        </div>
+    }
+
+    <h3>Matrix 2</h3>
+    @for (int i = 0; i < Model.Size; i++)
+    {
+        <div>
+            @for (int j = 0; j < Model.Size; j++)
+            {
+                @Html.TextBox($"matrix2[{i}][{j}]", (i + 1) + (j + 1), new { type = "number" })
+            }
+        </div>
+    }
+
+    @Html.TextBox("operation", "Add", new { type = "submit" })
+    @Html.TextBox("operation", "Multiply", new { type = "submit" })
+}
