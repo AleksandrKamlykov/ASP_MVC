@@ -1,16 +1,20 @@
-using ASP_MVC.Interfaces;
+using ASP_MVC.Data;
 using ASP_MVC.Models;
-using ASP_MVC.Repository;
 using ASP_MVC.Services;
+using ASP_MVC.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddTransient<IProductsRepository, ProductsRepository>();
-builder.Services.AddHttpClient<TMDbService>();
-builder.Services.AddTransient<TMDbService>();
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    );
+
+builder.Services.AddScoped<IWeatherService, WeatherService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,8 +36,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.MapControllerRoute(
-    name: "products",
-    pattern: "{controller=Product}/{action=Index}");
 
 app.Run();
